@@ -25,8 +25,9 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import com.facebook.FacebookSdk.*;
 
-public class MainActivity extends AppCompatActivity
+public  class MainActivity extends AppCompatActivity
 {
     private LoginButton loginButton;
     CallbackManager callBackManager;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         callBackManager = CallbackManager.Factory.create();
         loginButton = findViewById(R.id.login_button);
         loginButton.setReadPermissions("email","username");
