@@ -21,12 +21,12 @@ public class UserProfile extends AppCompatActivity
 {
  JSONObject jsonObject ,profilePicData,profilePicUrl;
     ImageView img;
-    TextView name,email,id;
+    TextView name,email,birthday;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
-
+        SaveFbLogin saveFbLogin = new SaveFbLogin(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userprofile);
         Intent intent =getIntent();
@@ -35,16 +35,21 @@ public class UserProfile extends AppCompatActivity
         name=findViewById(R.id.name);
         email = findViewById(R.id.email);
         img = findViewById(R.id.dp);
+        birthday = findViewById(R.id.birthday);
         try
         {
             jsonObject = new JSONObject(jsonData);
             name.setText(jsonObject.get("name").toString());
             email.setText(jsonObject.get("email").toString());
+            birthday.setText(jsonObject.get("birthday").toString());
             profilePicData=new JSONObject(jsonObject.get("picture").toString());
             profilePicUrl=new JSONObject(profilePicData.getString("data"));
+            String imageUrl = profilePicUrl.getString("url");
             Picasso.with(this).load(profilePicUrl.getString("url")).into(img);
+            saveFbLogin.saveFbInfo(jsonObject.get("name").toString(),jsonObject.get("email").toString(),jsonObject.get("birthday").toString(),imageUrl);
 
-        } catch (JSONException e) {
+        } catch (JSONException e)
+        {
             e.printStackTrace();
         }
     }

@@ -31,6 +31,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".UserProfile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+               </intent-filter>
+        </activity>
+        <activity android:name=".AfflineFile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
