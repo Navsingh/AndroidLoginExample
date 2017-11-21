@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -39,6 +42,7 @@ public  class MainActivity extends AppCompatActivity
     String accessToken;
     CallbackManager callBackManager;
     SaveFbLogin saveFbLogin = new SaveFbLogin(this);
+    TextView punjabi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,6 +50,11 @@ public  class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FacebookSdk.sdkInitialize(getApplicationContext());
+        punjabi = findViewById(R.id.punjbai);
+        if(Build.VERSION.SDK_INT>=26) {
+            Typeface typeface = getResources().getFont(R.font.gurbaniwebthick);
+            punjabi.setTypeface(typeface);
+        }
         if ((AccessToken.getCurrentAccessToken() != null) && (Profile.getCurrentProfile() != null))
         {
             Toast.makeText(getApplicationContext(), "Already Logged in", Toast.LENGTH_LONG).show();

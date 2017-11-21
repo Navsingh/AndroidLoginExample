@@ -12,7 +12,8 @@
         android:text="Get Start with facebook"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:id="@+id/punjbai"/>
   <!---  <view
         android:layout_width="match_parent"
         android:layout_height="5dp"
